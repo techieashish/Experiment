@@ -9,7 +9,6 @@ import esse
 def extract(url, choice=None):
     while True:
         try:
-            global res
             headers = {'USER-AGENT': 'Mozilla/5.0'}
             res = requests.get(url, headers=headers)
         except (Exception, requests.RequestException, ConnectionError, TimeoutError) as e:
@@ -36,11 +35,3 @@ def zomato():
                 for i in everything:
                     print(i.text)
         u -= 1
-
-
-def torrent():
-    url = "http://1337x.to/"
-    data = extract(url)
-    print(data)
-
-torrent()
