@@ -6,21 +6,18 @@ import time
 import esse
 
 
-def extract(url, choice=None):
+def extract(url):
     while True:
         try:
             headers = {'USER-AGENT': 'Mozilla/5.0'}
             res = requests.get(url, headers=headers)
         except (Exception, requests.RequestException, ConnectionError, TimeoutError) as e:
             print(e)
-            time.sleep(30)
+            time.sleep(2)
         else:
             break
-    if choice == "res":
-        return res
-    else:
-        soup = bs4.BeautifulSoup(res.text, 'html.parser')
-        return soup
+    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    return soup
 
 
 def zomato():
